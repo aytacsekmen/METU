@@ -1,0 +1,147 @@
+INPUT:
+
+%
+#
+Hi %pal!#
+It is %a nice day#.
+
+EXPECTED OUTPUT:
+
+pal!
+a nice day
+Hi pal!It is a nice day.
+
+
+INPUT:
+
+[begin]
+[end]
+[begin]CENG 140[end] is [begin]
+great[end].
+
+EXPECTED OUTPUT:
+
+great
+CENG 140
+CENG 140 is great.
+
+
+INPUT:
+
+{{
+}}
+in m{{au}}ris.
+
+EXPECTED OUTPUT:
+
+au
+in mauris.
+
+
+INPUT:
+
+?!
+!?
+in ?!ma
+ur!?is.
+
+EXPECTED OUTPUT:
+
+maur
+in mauris.
+
+
+INPUT:
+
+{{
+}}
+{{du}}is o{{di}}o {{mi}} l{{igula.}}
+
+EXPECTED OUTPUT:
+
+du
+di
+mi
+igula.
+duis odio mi ligula.
+
+
+INPUT:
+
+<b>
+</b>
+<b>du</b>is od
+io mi lig<b>ul</b>a.
+
+EXPECTED OUTPUT:
+
+du
+ul
+duis odio mi ligula.
+
+
+INPUT:
+
+?!
+!?
+?!du!?is o?!di!?o mi ligul?!a.!?
+
+EXPECTED OUTPUT:
+
+du
+di
+a.
+duis odio mi ligula
+
+INPUT:
+
+{{
+}}
+proin {{se}}d tortor ac {{puru}}s {{ultricie}}s hend{{re}}rit {{se}}d.
+
+EXPECTED OUTPUT:
+
+se
+re
+se
+puru
+ultricie
+proin sed tortor ac purus ultricies hendrerit sed.
+
+
+INPUT:
+
+<b>
+</b>
+<b>proi</b>n sed <b>to</b>rtor ac purus <b>ultric</b>ies he<b>ndreri</b>t <b>sed.</b>
+
+EXPECTED OUTPUT:
+
+to
+proi
+sed.
+ultric
+ndreri
+proin sed tortor ac purus ultricies hendrerit sed.
+
+
+INPUT:
+
+?!
+!?
+?!pr!?oin sed to?!rt!?or ac pu?!ru!?s ?!ul!?tr?!icie!?s ?!hend!?re?!ri!?t ?!se!?d.
+
+EXPECTED OUTPUT:
+
+pr
+rt
+ru
+ul
+ri
+se
+icie
+hend
+proin sed tortor ac purus ultricies hendrerit sed.
+
+
+
