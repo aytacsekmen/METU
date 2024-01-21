@@ -1,0 +1,116 @@
+#AYTAC SEKMEN 2575983
+.pos 0x0
+init:
+    irmovq stack, %rsp
+    irmovq $6, %rdx
+    irmovq array_begin, %rdi
+    irmovq array_end, %rsi
+    call binary_search
+    halt
+
+#implement your code below (DO NOT CHANGE/REMOVE THIS COMMENT)
+
+
+binary_search:
+    rrmovq %rdi, %rbp #begin
+    rrmovq %rdi, %rbx # rbx=begin
+    rrmovq %rsi, %rcx # rcx=end
+    rrmovq %rsi, %r11 # r11=end
+    rrmovq %rdx, %r8  # r8=value
+    
+    subq %rbx,%r11
+    irmovq $16, %r9
+    dvvq %r9, %r11
+    irmovq $8, %r8
+    mllq %r8, %r11
+    addq %rbx, %r11 # mid
+    rrmovq %r11, %r13 # mid
+    rrmovq %rsi, %rcx # rcx=end
+    jmp controller
+
+controller:
+    subq %rbx, %rcx # rbx begin rcx end, rcx=end-begin
+    jle cond0
+    mrmovq (%r13), %r10 # r10= *r13
+    rrmovq %rdx, %r8
+    subq %r10, %r8 # r8=value -*mid oldu
+    je cond1
+    jg cond2
+    jmp cond3
+    
+cond0:
+    irmovq $-1, %rax
+    ret 
+
+cond1:
+    irmovq $8, %r11
+    rrmovq %r13, %r14
+    addq %r11, %r14
+    subq %rdi, %r14
+    dvvq %r11, %r14
+    rrmovq %r14,%rax
+    ret
+cond2:
+    irmovq $8, %r11
+    rrmovq %r13, %r14
+    addq %r11, %r14
+    rrmovq %r14, %rdi # rdi=mid+1
+    #rsi=end
+    #rdx=value 
+    pushq %rbp
+    pushq %r13
+    call binary_search
+    popq %r13
+    popq %rbp
+    rrmovq %r13, %r14
+    irmovq $-1, %r12
+    subq %r12, %rax
+    je cond21
+
+    #cond2farklılık
+    irmovq $1, %r11
+    addq %r12, %rax
+    addq %r11, %rax
+    subq %rbp, %r14
+    irmovq $8, %r11
+    dvvq %r11, %r14
+    addq %r14, %rax
+    ret
+cond21:
+    rrmovq %r12, %rax
+    ret
+
+
+
+cond3:
+    
+    rrmovq %r13,%rsi
+    call binary_search
+    ret
+son:
+    irmovq $-1, %rax
+    ret
+
+
+
+    
+
+#implement your code above (DO NOT CHANGE/REMOVE THIS COMMENT)
+
+.pos 0x1008
+array_begin:
+    .quad 1
+    .quad 2
+    .quad 3
+    .quad 5
+    .quad 6
+    .quad 7
+    .quad 9
+    .quad 11
+array_end:
+    .quad 0
+.pos 0x1F00
+stack:
+    .quad 0
+
+

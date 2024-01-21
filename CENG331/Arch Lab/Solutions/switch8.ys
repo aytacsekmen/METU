@@ -1,0 +1,132 @@
+# AYTAC SEKMEN 2575983
+# Comments:
+# 1) I added jtab instruction along with proper jumptable. Thanks to this move, I got rid of redundant chaining jump instructions. 
+#    This move reduced my cpe from 45.61875 to 27.16875 which is actually lower than 28. 
+#    But I further improved my speed.
+# 2) There was a redundant "rrmovq %r8, %r9" instruction in line 21. After deleting it my CPE reduced to 26.16875.
+
+
+.pos 0x0
+	irmovq stack, %rsp  	# Set up stack pointer  
+    irmovq array_begin1, %rdi
+    irmovq array_begin2, %rsi
+    irmovq $16, %rdx
+    call switch8
+    halt
+    
+#implement your code below (DO NOT CHANGE/REMOVE THIS COMMENT)
+
+switch8:
+loop:
+    andq %rdx, %rdx
+    jle done:
+    
+    mrmovq (%rdi), %r8
+    mrmovq (%rdi), %r11
+    irmovq $8, %r12
+    modq %r12, %r8
+    mllq %r12, %r8
+    jtab table,%r8
+
+    cases_over:
+    irmovq $16, %r10
+    addq %r10, %r11
+    rmmovq %r11, (%rsi)
+    irmovq $1, %r10
+    subq %r10, %rdx
+    irmovq $8, %r10
+    addq %r10, %rdi 
+    addq %r10, %rsi
+    jmp loop
+done:
+ret
+
+
+#0 -> add 1
+case0:
+irmovq $1, %r10
+addq %r10, %r11
+jmp cases_over
+
+#1 -> multiply by 5
+case1:
+irmovq $5, %r10
+mllq %r10, %r11
+jmp cases_over
+
+#2 -> divide by 2
+case2:
+irmovq $2, %r10
+dvvq %r10, %r11
+jmp cases_over
+
+#3 -> take mod 3
+case3:
+irmovq $3, %r10
+modq %r10, %r11
+jmp cases_over
+
+#4 -> subtract 7
+case4:
+irmovq $7, %r10
+subq %r10, %r11
+jmp cases_over
+
+#5 -> make it 331
+case5:
+irmovq $331, %r11
+jmp cases_over
+
+#6 -> add 10
+case6:
+irmovq $10, %r10
+addq %r10, %r11
+jmp cases_over
+
+#7 -> divide by 3
+case7:
+irmovq $3, %r10
+dvvq %r10, %r11
+jmp cases_over
+
+table:
+.quad case0
+.quad case1
+.quad case2
+.quad case3
+.quad case4
+.quad case5
+.quad case6
+.quad case7
+
+
+#implement your code above (DO NOT CHANGE/REMOVE THIS COMMENT)
+
+.pos 0x1008
+array_begin1:
+    .quad 0
+    .quad 1
+    .quad 2
+    .quad 3
+    .quad 4
+    .quad 5
+    .quad 6
+    .quad 7
+    .quad 8
+    .quad 9
+    .quad 10
+    .quad 11
+    .quad 12
+    .quad 13
+    .quad 14
+    .quad 15
+array_end1:
+    .quad 0
+.pos 0x1500
+array_begin2:
+    .quad 0
+.pos 0x1F00
+stack:
+    .quad 0
+
+

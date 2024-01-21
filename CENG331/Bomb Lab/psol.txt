@@ -1,0 +1,7 @@
+Correct text is I am not part of the problem. I am a Republican.
+0 2 10 28 60 110
+6 860 1
+4 262144 DrSlightlyEvil
+7 64
+3 5 2 4 6 1
+788
