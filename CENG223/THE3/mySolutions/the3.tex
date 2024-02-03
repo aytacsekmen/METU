@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+%misc libraries goes here
+
+\begin{document}
+
+\section*{Student Information }
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Aytaç Sekmen \\
+Id Number :  2575983 \\
+
+% Write your answers below the section tags
+\section*{Answer 1}
+Let's call $6^{2n}-1$=P(n)\\
+1) Base case: n=1 \\
+P(n)=35 which is already divisible by 5 and 7.\\
+\\
+2)Inductive step: Assume that P(n) is divisible by 5 and 7 when n=k. Then we can say that $5m=7n=6^{2k}-1$ or $5m+1=7n+1=6^{2k}$ as m,n,k$\in \mathbb{N^+}$.\\
+\\
+3)Let's consider the case n=k+1. P(k+1)=$6^{2k+2}-1$=$36*6^{2k}-1$. To check the divisiblity for 5:\\
+3.1) Since $6^{2k}=5m+1$ We can state that: P(k+1)=$36 \times(5m+1)-1=180m+35=5\times(36m+7)$. Since 36m+7 is an integer so P(k+1)=$5\times(36m+7)$ is divisible by 5. So i have proven that  $6^{2n}-1$ is divisible by 5.\\
+\\
+Let's check divisibility for 7:\\
+3.2) Since $6^{2k}=7n+1$ We can state that: P(k+1)=$36 \times(7n+1)-1=252n+35=7\times(36n+5)$. Since 36n+5 is an integer so P(k+1)=$7\times(36n+5)$ is divisible by 7. So i have proven that  $6^{2n}-1$ is divisible by 7.\\\\
+Since I have showed that  $6^{2n}-1$ is divisible by 5 and 7 for n=k+1, by using mathematical induction I have showed that  $6^{2n}-1$ is divisible by 5 and 7 for n $\geq$1
+
+
+\section*{Answer 2}
+1)Base case n=0:\\
+$H_0=1\leq9^0=1$\\
+Base case n=1:\\
+$H_1=5\leq9^1=9$\\
+Base case n=2:\\
+$H_2=7\leq9^2=81$\\
+Base case n=3, which can be deriven by using upper 3 base case:\\
+$H_3=8H_{2}+8H_{1}+9H_{0}=105\leq729$\\
+\\2)Inductive step: This holds for all $3\leq k \leq n$\\
+$H_n\leq 9^n$\\
+$H_{n-1}\leq 9^{n-1}$\\
+$H_{n-2}\leq 9^{n-2}$\\\\
+3) Check for n+1:\\
+$H_{n+1}=8\times H_{n}+8\times H_{n-1}+9\times H_{n-2}$\\
+By using equations in Inductive Step:\\
+$8\times H_n\leq8\times 9^n$\\
+$8\times H_{n-1}\leq 8\times  9^{n-1}$\\
+$9\times H_{n-2}\leq 9\times  9^{n-2}$ So $H_{n+1}$ becomes:\\
+$H_{n+1}\leq 8\times 9^n+ 8\times  9^{n-1}+ 9\times  9^{n-2}$ If we organize them:\\
+$H_{n+1}\leq 72\times 9^{n-1}+ 8\times  9^{n-1}+ 9^{n-1}=81\times 9^{n-1}=9^{n+1}$\\
+Since I have showed that $H_{n+1} \leq 9^{n+1}$, by using strong induction I have concluded that $H_{n} \leq 9^{n}$ statement is true for all integer n$\geq 3$.
+
+
+
+\section*{Answer 3}
+How many bit strings of length 8 contain either 4 consecutive 0s or 4 consecutive 1s?\\
+We can think of bit strings of length 8 as xxxxxxxx. To calculate the possibilites contain 4 consecutive 0s:\\
+1)We can put 0s in the first 4 bits: 0000xxxx. And $2^4$ possible case for the other 4 bits. 16 possible cases\\
+2)We can put 0s between $2^{nd}$ and $5^{th}$ bits: 10000xxx.  And $2^3$ possible case for the other 3 bits. 8 possible cases\\
+3)We can put 0s between $3^{rd}$ and $6^{th}$ bits: x10000xx. And $2^3$ possible case for the other 3 bits. 8 possible cases\\
+4)We can put 0s between $4^{th}$ and $7^{th}$ bits: xx10000x. And $2^3$ possible case for the other 3 bits. 8 possible cases\\
+5)We can put 0s between $5^{th}$ and $8^{th}$ bits: xxx10000. And $2^3$ possible case for the other 3 bits. 8 possible cases\\
+So there is $16+4\times8=48$ possible cases for 4 consecutive 0s.\\
+Note: I added extra 1 to the beginning of 4 0s to avoid counting duplicate bit strings twice.\\\\
+To caculate the possibilites contain 4 consecutive 1s:\\
+1)We can put 1s in the first 4 bits: 1111xxxx. And $2^4$ possible case for the other 4 bits. 16 possible cases\\
+2)We can put 1s between $2^{nd}$ and $5^{th}$ bits: 01111xxx.  And $2^3$ possible case for the other 3 bits. 8 possible cases\\
+3)We can put 1s between $3^{rd}$ and $6^{th}$ bits: x01111xx. And $2^3$ possible case for the other 3 bits. 8 possible cases\\
+4)We can put 1s between $4^{th}$ and $7^{th}$ bits: xx01111x. And $2^3$ possible case for the other 3 bits. 8 possible cases\\
+5)We can put 1s between $5^{th}$ and $8^{th}$ bits: xxx01111. And $2^3$ possible case for the other 3 bits. 8 possible cases\\
+So there is $16+4\times8=48$ possible cases for 4 consecutive 1s.\\\\
+Note: I added extra 0 to the beginning of 4 1s to avoid counting duplicate bit strings twice.\\
+But we should find the intersection of these cases:\\
+1)11110000\\
+2)00001111 these 2 cases are actually 2 cases which I have counted twice. So there is actually 48+48-2=94 possible bit strings which contain either 4 consecutive 0s or 4 consecutive 1s.
+
+
+
+
+
+\section*{Answer 4}
+Since there is 10 distinct stars there is actually 10 different options to selecting a star. Selecting 2 habitable planets out of 20 habitable planets is $C(20,2)$. Selecting 8 unhabitable planets out of 20 habitable planets is $C(80,8)$. If we place 8 Non habitable planets one by one there will be 9 space, which we can place 2 habitable planets in, between them. -N-N-N-N-N-N-N-N- . We can place first planet only in the first 3 space. If we place it in first space, then there is 3 option for second habitable planet. If it is in the second space, then there is 2 options for second planet. And if it is in the third space, then there is 1 option for the second planet. So for chosing the placing of planets there is 6 possibility. But since the planets are distinct, their placements can be changed between each other, so we have to multiply with 2!.8!.\\
+Final Result: $2!\times8!\times C(80,8)\times C(20,2)\times 6 \times C(10,1)$
+
+\section*{Answer 5}
+\paragraph{a)}
+Let me define $a_n$ to be the number of possible ways for robot to reach n cell away. If robot jumps 1 cell at first, there is (n-1) cell to jump which corresponds to $a_{n-1}$. Also if robot jumps 2 cell at first, there is (n-2) to jump, which corresponds to $a_{n-2}$. Also if robot jumps 3 cell at first, there is (n-3) to jump, which corresponds to $a_{n-3}$. So my recurrence relation end up being like this: \\$a_{n}=a_{n-1}+a_{n-2}+a_{n-3}$ 
+\paragraph{b)}
+1) For robot to jump 1 cell away there is actually 1 way of doing this (1). $a_1=1$ \\
+2) For robot to jump 2 cell away there is actually 2 way of doing this (1+1 or 2). $a_2=2$\\
+3) For robot to jump 3 cell away there is actually 4 way of doing this (1+1+1, 1+2, 2+1, 3). $a_3=4$
+
+\paragraph{c)}
+Since recurrence relation is of the form: $a_{n}=a_{n-1}+a_{n-2}+a_{n-3}$. We can rewrite it like this: $a_{n}-a_{n-1}-a_{n-2}-a_{n-3}=0$ Characteristic equation is: $ x^3-x^2-x-1=0$ And we can write it like this: $x(x^2-1)-x^2-1=(x+1)(x^2-1)=0$ Since finding root of this is very complicated I will just give the answer by going backwards:\\
+$a_4=a_3+a_2+a_1=7$\\
+$a_5=a_4+a_3+a_2=13$\\
+$a_6=a_5+a_4+a_3=24$\\
+$a_7=a_6+a_5+a_4=44$\\
+$a_8=a_7+a_6+a_5=81$\\
+$a_9=a_8+a_7+a_6=149$\\
+$a_9$=149.
+\end{document}

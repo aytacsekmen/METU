@@ -1,0 +1,176 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+%misc libraries goes here
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Aytaç Sekmen \\
+Id Number :  2575983 \\
+
+% Write your answers below the section tags
+\section*{Answer 1}
+Note: I use this symbol "${\rm I\!R}^+$"  to represent the nonnegative real numbers, because i couldnt find how to draw a small line on a Real number symbol in latex as u write in "The-2" pdf file.
+\paragraph{a)} % For f_1
+1)Let's say a=1, b=$-1$  such that a, b $\in $ ${\rm I\!R}$. So f(a)=1 and f(b)=1 since f(a)=f(b) even if a and b are not equal, so $f_{1}$ is not injective. 
+
+2) Let's say x$\in $ ${\rm I\!R}$ then $x^2$ $\in $ ${\rm I\!R}$ but the range of this function is (0,$\infty$) since not all the numbers like -1 are not in the range, the function  $f_{1}$ is not surjective, too.
+
+
+\paragraph{b)} % For f_2
+
+1)Let a,b $\in$ ${\rm I\!R}^+$ such that f(a)=$a^2$, f(b)=$b^2$. This implies $a^2=b^2$ which corresponds to a=b or a=-b. Since our domain is the nonnegative real numbers, both a and b should be nonnegative which implies that a=b. so finally this means: $\forall a,b(f(a)=f(b)\rightarrow a=b)$ means $f_1$ is injective. 
+
+2)For example number a=$-1$ is in codomain of $f_2$, ${\rm I\!R}^+$. However $-1$ is not the square of any real number. Therefore, there is no element of the domain that maps to the corresponds to the number -1, so $f_2$ is not surjective.
+
+
+\paragraph{c)}
+1)Numbers a=1 and a=-1 are both in the domain of $f_3$ and a$\neq$b. But $f_3(a)$=$f_3(b)$=1. So $f_3$ is not injective.
+
+2)Since the minimum value that $x^2$ can take is 0 (for the value of x=0), the range of function is ${\rm I\!R}^+$ which equals to the codomain of this function. Since codomain and range are equal to each other $f_3$ is surjective.
+
+
+\paragraph{d)}
+1)Let a,b $\in$ ${\rm I\!R}^+$ such that f(a)=$a^2$, f(b)=$b^2$. This implies $a^2=b^2$ which corresponds to a=b or a=-b. Since our domain is the nonnegative real numbers, both a and b should be nonnegative which implies that a=b. so finally this means: $\forall a,b(f(a)=f(b)\rightarrow a=b)$ means $f_1$ is injective. 
+
+2)Since the minimum value that $x^2$ can take is 0 (for the value of x=0), the range of function is ${\rm I\!R}^+$ which equals to the codomain of this function. Since codomain and range are equal to each other $f_3$ is surjective.
+
+
+\section*{Answer 2}
+\paragraph{a)}
+Let's pick some $x_0\in A$ and let $\epsilon >0$. And i choose the $\delta$=1/2. Let $x \in {\mathbb{Z}}$ and suppose that $|x-x_0|<\delta=1/2$. Since there is only $x_0$ itself with in distance 1/2, this should satisfy that $x=x_0$.Thus $f(x)=f(x_0)$ and $|f(x)-f(x_0)|=0$ which is certainly less than $\epsilon$.  This actullay shows that f is continous at $x_0$. Since I choose $x_0$ as arbitrary, f is continous on its domain.
+
+
+\paragraph{b)}
+Let's pick some $x_0,$ $x \in A$ and let $\epsilon =1/2$ . So for this $\epsilon$ value there must be some $\delta >0$ such that if $|x-x_0|<\delta$ then $|f(x)-f(x_0)|<\epsilon$. But for this definition to be true(which actually says f is continous function), $|f(x)-f(x_0)|<\epsilon=1/2$ should be true. Only way for this to be true is $f(x)=f(x_0)$ because minimum distance between two distinct integer number is 1 and $1>1/2$. So I concluded that for a function whose domain is $\mathbb{R}$ and whose codomain is $\mathbb{Z}$, to be a continous the only way for that f is a constant function.
+
+
+
+\section*{Answer 3}
+\paragraph{a)}
+I will use induction for this question. In case $n=1$ then $X_n=A_1$ which is countable. Now let's assume that $A_n (n \in k, 1\geq n<k)$ is countable; Then $X_{n+1}=(A_1*A_2*...*A_n)*A_{n+1}=X_n*X_{n+1}$ where the $X_n$ and the $X_{n+1}$ can be called countable. Hence the cartesian product of the countable sets is always countable. So $X_{n+1}$ is countable.
+
+
+\paragraph{b)}
+Suppose $S$ is countable, S=X*X*... . Let ($F_n: n \in \mathbb{N}$) be an enumeration of $S$. For each n, they correspond to $0, 1 \in X=\{0,1\} $. Let's define another function $G(m) \in S$ as:
+
+G(m)=
+
+\[ \begin{cases}
+      1 & F_m (m)=0 \\
+      0 & F_m(m)=1 
+   \end{cases}
+\]
+This follows that $G \in S$ but it is different of all $F_n$'s which is a contradiction. In concluison, I showed that infinite countable product of the set $X = \{0, 1\}$ with itself is uncountable.
+
+
+\section*{Answer 4}
+
+Answer:
+$(n!)^2>5^n>2^n>n^{51}+n^{49}>n^{50}>\sqrt{n}\log n>(\log n)^2$
+
+\paragraph{a)} % Compare your first and second functions
+$\lim_{x \to \infty} \dfrac {5^n}{(n!)^2}=0$. For the proof of this i can use series. $\sum_{n=1}^{\infty}\dfrac {5^n}{(n!)^2}$ Let's use ratio test for the convergence of this series. So we should look at this limit: $\lim_{x \to \infty} \dfrac{5^{n+1}*(n!)^2}{((n+1)!)^2*5^n}=\lim_{n \to \infty} \dfrac{5}{(n+1)^2}=0$ Since limit goes to $0$, this means our series converges to some constant k $\in \rm I\!R$, which means $\lim_{n \to \infty} (n^{th}$ term)=0, in our case  $n^{th}$ term is $\dfrac {5^n}{(n!)^2}$ so $\lim_{n \to \infty} \dfrac {5^n}{(n!)^2=0}$ So I have showed that: $5^n$ = $\mathcal{O}((n!)^2)$
+
+
+\paragraph{b)} % Compare your second and third functions
+$\lim_{x \to \infty} \dfrac {5^n}{2^n}=\lim_{x \to \infty} (\dfrac {5}{2} ) ^n=\infty$.  So it is shown that:
+
+$2^n$ = $\mathcal{O}(5^n)$
+
+
+\paragraph{c)}
+$\lim_{x \to \infty} \dfrac{n^{51}+n^{49}}{2^n}=0$. For the proof this limit: I can say that since both the denominator and numerator go to $\infty$ I should use L'Hopital's Rule: $\lim_{n \to \infty} \dfrac{n^{51}+n^{49}}{2^n}=\lim_{x \to \infty} \dfrac{51*n^{50}+49*n^{48}}{\ln 2 *2^n}$. And if I keep using L Hopital's Rule 50 more times my equation will become like this:$\lim_{n \to \infty} \dfrac{51!}{(\ln 2 )^{51}*2^n}$=0 (which is obvious). So in conclusion I have showed that:  $n^{51}+n^{49}$ = $\mathcal{O}(2^n)$
+
+
+
+
+
+\paragraph{d)}
+Let's  take domain as $n>1$
+
+$n^{51}+n^{49}=n(n^{50}+n^{48})>n\times n^{50}$ I can divide both sides by "$n$" because we take domain as $n>1$ so:
+
+$n^{51}+n^{49}=n(n^{50}+n^{48})>(n^{50}+n^{48})>n^{50}$ so as we can clearly see. $n^{50}$ = $\mathcal{O}(n^{51}+n^{49})$
+
+
+\paragraph{e)}
+$\lim_{x \to \infty} \dfrac{n^{50}}{\sqrt{n}*\ln n}=\infty$. To prove this, let's use L'Hopital's Rule since both the denominator and numerator goes to $\infty$. $\lim_{x \to \infty} \dfrac{n^{50}}{\sqrt{n}*\ln n}=\lim_{x \to \infty} \dfrac{50*n^{49}}{\dfrac{1}{2*\sqrt{n}*n}}=\dfrac {\infty}{0}=\infty$
+
+ $\sqrt{x}*\ln n$ = $\mathcal{O}(n^50)$
+
+
+\paragraph{f)}
+Comparison between: $\sqrt{n}\log n$ and $(\log n)^2$:
+Lets consider our domain as $n>4$:
+Let's assume that:
+$\sqrt{n}\log n > (\log n)^2$ (Since $\log n > 0$ for $n>4$ I can divide both side with $\log n$)
+
+So our duty is to show that:
+$\sqrt{n} > \log n$
+
+Let $f(n)=\sqrt{n} - \log n$ So $f(4)\approx1.4>0$. Also $f'=\dfrac{1}{2\sqrt{n}}-\dfrac{1}{n} >0$ for $n>4$. This actually means that our function keeps increasing after $n>4$ so our proof is done. Since we have showed that $\sqrt{n} > \log n$ is true, then $\sqrt{n}\log n>(\log n)^2$ is also true.  $(\log n)^2$ = $\mathcal{O}(\sqrt{n}\log n)$
+
+
+\section*{Answer 5}
+\paragraph{a)}
+Since 134$>$94;
+
+Step 1: 134=94*(1)+40
+
+
+Step 2: 94=40*(2)+14
+
+
+Step 3: 40=14*(2)+12
+
+
+Step 4: 14=12*(1)+2
+
+
+Step 5: 12=2*(6)+0
+
+So by Definition of Euclidean Algorithm gcd(94,134) equals to "2".
+
+
+\paragraph{b)}
+Let $a>5$ be an integer. There is 2 condition to check for whether $a$ is odd or even.
+
+Condition 1: Let's say $a$ is even.
+
+Then $a$ should be in the form of $a=2n$ for $n\geq 3$. Also $a-2=2n-2=2(n-1)$ so also $a -2$ is even.
+
+By using definition for Golbach's Conjecture, we can write like this:
+$2n-2=p_1+p_2$ as $p_1$ and $p_2$ are two prime numbers. Thus $2n=p_1+p_2+2$ which corresponds to sum of three prime numbers, since 2 is a prime number.
+
+Condiiton 2: Let's say $a$ is odd, this time
+
+Then $a$ should be in the form of $a=2n+1$ for $n\geq 3$. Also $a-3=2n-2=2(n-1)$ so $a-3$ is also even.
+
+By using definition for Goldbach's Conjecture, we can write like this:
+$a-3=p_1+p_2$ as $p_1$ and $p_2$ are two prime numbers. Thus $a=p_1+p_2+3$ which corresponds to a sum of three primes.
+
+In addition to these, suppose every integer $a>5$ is the sum of three primes such that $a=p_1+p_2+p_3$ and let $a>2$ be an even integer. Then $a+2=2n+2$ is even and $a+2>5$, thus $a+2=p_1+p_2+p_3$ is the sum of three primes $p_1, p_2, p_3$. Since $a+2$ is even, this actually means that at least one of $p_1, p_2, p_3$ must be $2$. Since my aim is to show that these two statements are equivalent. I should also show the opposite way:
+
+Let's assume $p_3=2$ then $a+2=p_1+p_2+2$ also $a=p_1+p_2$ is a sum of two primes. 
+
+In conclusion, Goldbach’s conjecture that every even integer greater than $2$ is the sum of two primes is equivalent to the statement that every integer greater than $5$ is the sum of three
+primes.
+
+
+\end{document}

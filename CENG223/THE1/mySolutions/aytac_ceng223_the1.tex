@@ -1,0 +1,169 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+%misc libraries goes here
+\usepackage{fitch}
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Aytaç SEKMEN \\
+Id Number : 2575983 \\
+
+% Write your answers below the section tags
+\section*{Answer 1}
+Part (a)
+
+\begin{displaymath}
+\begin{array}{|c | c | c | c | c |c|c|}
+
+p & q & \neg p & \neg q & p \land q & \neg p \lor \neg q &  (p \land q)\iff (\neg p \lor \neg q)\\
+\hline 
+T & T & F& F&T&F&F\\
+T & F & F&T&F&T&F\\
+F & T & T&F&F&T&F\\
+F & F & T&T&F&T&F\\
+\end{array}
+\end{displaymath}
+\\
+
+Since it gives "False" for every possibile case the statement (p $\land$ q)$\iff$ ($\neg$ p $\lor \neg$ q) is a contradiction.\\\\\\
+
+Part (b)
+
+\begin{table}[H]
+%\small
+
+\centering
+
+\begin{tabular}{c l l }	
+1 & p $\rightarrow$ ((q $\lor$ $\neg$q) $\rightarrow$ (p $\land$ q))& Premise \\
+2 & $\neg$p $\lor$ ((q $\lor$ $\neg$q) $\rightarrow$ (p $\land$ q)) & Table-7, Rule-1 \\
+3 & $\neg$p $\lor$ ($\neg$(q $\lor$ $\neg$ q) $\lor$ (p $\land$ q)) & Table-7, Rule-1 \\
+4 & $\neg$p $\lor$ (($\neg$q $\land$ q) $\lor$ (p $\land$ q)) &  De Morgan's Laws (Table-6, Rule-8) \\
+5 & $\neg$p $\lor$ (F $\lor$ (p $\land$ q))& Negation Laws (Table-6, Rule-10) \\
+6 & $\neg$p $\lor$  (p $\land$ q)& Identity Laws (Table-6, Rule-1) \\
+7 & ($\neg$p $\lor$ p) $\land$ ($\neg$p$\lor$ q)& Distributive Laws (Table-6 Rule-7) \\
+8 & T $\land$ ($\neg$p$\lor$ q)& Negation Laws (Table-6 Rule-10) \\
+9 & $\neg$p$\lor$ q & Identity Laws (Table-6 Rule-1)\\
+
+
+
+
+\end{tabular}
+\end{table}
+
+So "p $\rightarrow$ ((q $\lor$ $\neg$q) $\rightarrow$ (p $\land$ q))" and "$\neg$p$\lor$ q" are logically equivalent.
+
+\section*{Answer 2}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l l}
+
+a)& $\forall$x$\exists$yW(x,y)\\
+b)& $\exists$y$\forall$x $\neg$F(x,y)\\
+c)& $\forall$x (W(x,P)$\rightarrow$ A(Ali,P))\\
+d)& $\exists$x (W(Büşra,x) $\land$ F(TUBITAK,x))\\
+e)& $\exists$z$\exists$y$\exists$x (S(x,y) $\land$ S(x,z) $\land$ (y$\neq$z))\\
+f)& $\forall$x$\forall$y$\forall$z((W(x,z)$\land$W(y,z))$\rightarrow$(x=y))\\
+g)&$\exists$x$\exists$y$\exists$z$\forall$t((W(x,z)$\land$W(y,z)$\land$(x$\neq$y))$\land$(W(t,z)$\rightarrow$((t=x)$\lor$(t=y))))
+\end{tabular}
+\end{table}
+
+
+\section*{Answer 3}
+
+
+\begin{table}[H]
+	\centering
+    
+	\begin{tabular}{l l l}
+		
+1&p$\rightarrow$q & premise \\
+2&(q $\land$ $\neg$r) $\rightarrow$ s & premise\\
+3&$\neg$s& premise\\ \hline
+4&(q$\land$ $\neg$r)&assumed\\
+5&s&$\rightarrow$e 2,4\\
+6&$\bot$&$\neg$e 3,5 \\ \hline
+7&$\neg$(q$\land$$\neg$r)&$\neg$i 4-6\\ \hline
+8&p&assumed\\
+9&q&$\rightarrow$e 1,8\\ \hline\hline
+10&$\neg$r&assumed\\
+11&q$\land \neg$r&$\land$i 9,10\\
+12&$\bot$&$\neg$e 7,11\\ \hline\hline
+13&r&$\neg$i 10-12\\ \hline
+14&p$\rightarrow$r&$\rightarrow$i 8-13
+
+
+	\end{tabular}
+\end{table}
+
+\section*{Answer 4}
+
+Ayşe: p \\
+Barış: s$\rightarrow \neg$q \\
+Can: p$\rightarrow$(q$\land$r)\\
+Duygu: r$\rightarrow$s\\
+
+\begin{table}[H]
+	\centering
+    
+	\begin{tabular}{l l l}
+		
+1&p & premise \\
+2&r$\rightarrow$s&premise\\
+3&p$\rightarrow$(q$\land$r)& premise\\ 
+4&(q$\land$r)&$\rightarrow$e 1,3\\
+5&q&$\land$e 4\\
+6&r&$\land$e 4\\
+7&s&$\rightarrow$e 2\\ \hline
+8&s$\rightarrow$$\neg$q&assumed\\
+9&$\neg$q&$\rightarrow$e 8,7\\
+10&$\bot$&$\neg$e 5,9\\ \hline
+11&$\neg$(s$\rightarrow\neg$q)&$\neg$i 8-10\\
+
+	\end{tabular}
+\end{table}
+
+Since I showed that $\neg$(s$\rightarrow \neg$q) is true, this means that Barış is lying.
+
+\section*{Answer 5}
+
+\begin{table}[H]
+	\centering
+    
+	\begin{tabular}{l l l}
+		
+1&$\forall x$(P(x)$\rightarrow$(Q(x)$\rightarrow$R(x))) & premise \\
+2&$\exists x(P(x))$&premise\\
+3&$\forall$($\neg$R(x))&premise\\ \hline
+%4&c&$\forall$i constant\\
+4&P(c)&assumed\\
+5&$\neg$R(c)&$\forall$e 3\\
+6&P(c)$\rightarrow$(Q(c)$\rightarrow$R(c))&$\forall$e 1\\
+7&Q(c)$\rightarrow$R(c)&$\rightarrow$e 4,6\\ \hline \hline
+8&Q(c)&assumed\\
+9&R(c)&$\rightarrow$e 7,8\\
+10&$\bot$&$\neg$e 5,9\\ \hline \hline
+11&$\neg$Q(c)&$\neg$i 8,10\\
+12&$\exists$x($\neg$Q(x))&$\exists x$ i 11\\ \hline
+13&$\exists x(\neg Q(x))$&$\exists x$ e 2,4-12
+	
+	\end{tabular}
+\end{table}
+
+\end{document}
