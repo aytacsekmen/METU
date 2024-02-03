@@ -1,0 +1,135 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{matlab-prettifier}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+%misc libraries goes here
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Aytaç SEKMEN\\
+Id Number :  2575983\\
+
+% Write your answers below the section tags
+\section*{Answer 1}
+
+\subsection*{a)}
+Probabilty I calculated through matlab: 0.0353. Which is relatively a low probabilty.
+
+\subsection*{b)}
+I calculated the expected as given in the book, by taking the mean of values in the array. And I found that the expected value is 238943.1774 which is acutally less than 300000. So it actually correlates with the probabilty I found in part-a.
+
+
+\subsection*{c)} 
+I calculated the standard deviation as given in the book, by taking the std of values in the array. And I found that the standard deviation is 32096.8436. My expected value is actually 61056.8226 tons behind the 300000 tons. Also 61056.8226> 32096.8436. Which then explains why the calculated probability I found in part-a is so small. This means, my estimator has high accuracy.
+
+
+\subsection*{Related Documents} 
+Codes:\\
+\begin{lstlisting}[style=Matlab-editor]
+%initial_data
+alpha_01=2.326;
+number_montecarlo=0.25*(alpha_01/0.03)^2;
+number_1=0;
+number_greater=0;
+loop_1=1;
+total_weight_array=zeros(1502,1);
+for loop_1=1:1502
+number_1=number_1+1;
+
+
+%bulk carrier
+total_bulk_weight=0;
+lambda_bulk = 50; 
+bulk_U = rand; 
+i_1 = 0; 
+F_1 = exp(-lambda_bulk); 
+while (bulk_U >= F_1); 
+F_1 = F_1 + exp(-lambda_bulk)* lambda_bulk^i_1/gamma(i_1+1);
+i_1 = i_1 + 1;
+end;
+bulk_ship_amount=i_1;
+for j=1:bulk_ship_amount
+intermediate_1=sum( -10 * log(rand(60,1)));
+total_bulk_weight=total_bulk_weight+intermediate_1;
+end
+
+
+%container ship
+total_container_weight=0;
+lambda_container = 25; 
+container_U = rand; 
+i_2 = 0; 
+F_2 = exp(-lambda_container); 
+while (container_U >= F_2); 
+F_2 = F_2 + exp(-lambda_container)* lambda_container^i_2/gamma(i_2+1);
+i_2 = i_2 + 1;
+end;
+container_ship_amount=i_2;
+for j=1:container_ship_amount
+intermediate_2=sum( -20 * log(rand(100,1)));
+total_container_weight=total_container_weight+intermediate_2;
+end
+
+
+%oil tanker
+total_oil_weight=0;
+lambda_oil = 25; 
+U_oil = rand; 
+i_3 = 0; 
+F_3 = exp(-lambda_oil); 
+while (U_oil >= F_3); 
+F_3 = F_3 + exp(-lambda_oil)* lambda_oil^i_3/gamma(i_3+1);
+i_3 = i_3 + 1;
+end;
+oil_ship_amount=i_3;
+for j=1:oil_ship_amount
+intermediate_3=sum( -50 * log(rand(120,1)) );
+total_oil_weight=total_oil_weight+intermediate_3;
+end
+
+%comparing results
+total_weight=total_oil_weight+total_bulk_weight+total_container_weight;
+total_weight_array(number_1)=total_weight;
+if total_weight>300000
+number_greater=number_greater+1;
+end
+end
+
+%calculating the required results
+expectation = mean(total_weight_array);
+deviation = std(total_weight_array);
+ratio=number_greater/number_1;
+fprintf('Probability: %.4f\n', ratio);
+fprintf('Expected value: %.4f\n', expectation);
+fprintf('Standard Deviation: %.4f\n', deviation);
+
+
+
+
+
+\end{lstlisting}
+Screenshot:\\
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{hw4_ss.png}
+  \centering
+  \label{fig 2:Pdf with changing sigma values}
+\end{figure}
+\end{document}

@@ -1,0 +1,28 @@
+% Chi square calculator
+
+final_x2=0;
+total=0;
+input_array=[34,32,15,19;56,58,75,71];
+number_of_rows=size(input_array,1);
+number_of_columns=size(input_array,2);
+numbers_in_rows=zeros(number_of_rows,1);
+numbers_in_columns=zeros(number_of_columns,1);
+degree_of_freedom=(number_of_rows-1)*(number_of_columns-1);
+for i=1:number_of_rows
+for j=1:number_of_columns
+total=total+input_array(i,j);
+numbers_in_rows(i,1)=numbers_in_rows(i,1)+input_array(i,j);
+numbers_in_columns(j,1)=numbers_in_columns(j,1)+input_array(i,j);
+end
+end
+for i=1:number_of_rows
+for j=1:number_of_columns
+average=numbers_in_rows(i,1)*numbers_in_columns(j,1)/total;
+final_x2=final_x2+((input_array(i,j)-average)^2)/average;
+
+end
+end
+p_value=1-chi2cdf(final_x2,degree_of_freedom);
+
+fprintf('X^2-value: %.4f\n', final_x2);
+fprintf('P-value: %.4f\n', p_value);

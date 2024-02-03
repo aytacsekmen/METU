@@ -1,0 +1,79 @@
+%initial_data
+alpha_01=2.326; %this is the value that I got from the chapter-9 in the book
+number_montecarlo=ceil(0.25*(alpha_01/0.03)^2);
+
+number_greater=0;
+
+total_weight_array=zeros(number_montecarlo,1);
+for loop_1=1:number_montecarlo
+total_weight=0;
+
+
+%bulk carrier
+total_bulk_weight=0;
+lambda_bulk = 50; 
+bulk_U = rand; 
+i_1 = 0; 
+F_1 = exp(-lambda_bulk); 
+while (bulk_U >= F_1);
+i_1 = i_1 + 1; 
+F_1 = F_1 + exp(-lambda_bulk)* lambda_bulk^i_1/gamma(i_1+1);
+
+end;
+bulk_ship_amount=i_1;
+for j=1:bulk_ship_amount
+intermediate_1=sum( (-10) * log(rand(60,1)));
+total_bulk_weight=total_bulk_weight+intermediate_1;
+end
+
+
+%container ship
+total_container_weight=0;
+lambda_container = 40; 
+container_U = rand; 
+i_2 = 0; 
+F_2 = exp(-lambda_container); 
+while (container_U >= F_2);
+i_2 = i_2 + 1; 
+F_2 = F_2 + exp(-lambda_container)* lambda_container^i_2/gamma(i_2+1);
+
+end;
+container_ship_amount=i_2;
+for j=1:container_ship_amount
+intermediate_2=sum( (-20) * log(rand(100,1)));
+total_container_weight=total_container_weight+intermediate_2;
+end
+
+
+%oil tanker
+total_oil_weight=0;
+lambda_oil = 25; 
+U_oil = rand; 
+i_3 = 0; 
+F_3 = exp(-lambda_oil); 
+while (U_oil >= F_3);
+i_3 = i_3 + 1; 
+F_3 = F_3 + exp(-lambda_oil)* lambda_oil^i_3/gamma(i_3+1);
+
+end;
+oil_ship_amount=i_3;
+for j=1:oil_ship_amount
+intermediate_3=sum( (-50) * log(rand(120,1)) );
+total_oil_weight=total_oil_weight+intermediate_3;
+end
+
+%comparing results
+total_weight=total_oil_weight+total_bulk_weight+total_container_weight;
+total_weight_array(loop_1)=total_weight;
+if total_weight>300000
+number_greater=number_greater+1;
+end
+end
+
+%calculating the required results
+expectation = mean(total_weight_array);
+deviation = std(total_weight_array);
+ratio_1=number_greater/number_montecarlo;
+fprintf('Probability: %.4f\n', ratio_1);
+fprintf('Expected value: %.4f\n', expectation);
+fprintf('Standard Deviation: %.4f\n', deviation);

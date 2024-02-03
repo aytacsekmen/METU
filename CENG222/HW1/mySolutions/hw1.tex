@@ -1,0 +1,152 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{matlab-prettifier}
+\usepackage{graphicx}
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+%misc libraries goes here
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name :  Aytaç SEKMEN\\
+Id Number :  2575983\\
+
+% Write your answers below the section tags
+\section*{Answer 1}
+
+\subsection*{a)} 
+While calculating the expected value, we can consider the values as the random variable. Also the possibility of each face to come in a single roll is equal so that we can calculate the expected values like this:\\\\For the blue one:\\\\$1\times\dfrac{1}{6}+2\times\dfrac{1}{6}+3\times\dfrac{1}{6}+4\times\dfrac{1}{6}+5\times\dfrac{1}{6}+6\times\dfrac{1}{6}=\dfrac{1}{6}\times(21)=3.5$\\\\\\
+For the yellow one:\\\\$1\times\dfrac{3}{8}+3\times\dfrac{3}{8}+4\times\dfrac{1}{8}+8\times\dfrac{1}{8}=\dfrac{24}{8}=3$\\\\\\
+For the red one:\\\\$2\times\dfrac{5}{10}+3\times\dfrac{2}{10}+4\times\dfrac{2}{10}+6\times\dfrac{1}{10}=\dfrac{30}{10}=3$
+
+
+
+\subsection*{b)} 
+I would prefer rolling three times the blue one. Because the expected value of rolling 3 times the blue one is E(3$\times$B)=3.5*3=10.5. On the other hand, rolling single die of each color has the expected value of E(B+Y+R)=E(B)+E(Y)+E(R)=3.5+3+3=9.5. So the possibility to get the higher total value is higher if we choose to roll 3 times a blue one.
+
+\subsection*{c)} 
+To decide it, we should consider the change in the expected value: 3.5(blue's)+8(yellow's)+3(red's)= 14.5$\geq$10.5 which is actually greater than the expected value of the option rolling 3 times a blue one. So I would choose to roll single die of each color to maximize the total value if it is guarenteed that the yellow's value is 8.
+
+\subsection*{d)}
+To be more clear later in this question: Let's say P(X) is the possibility of getting a 3 as a value and P(R) is the possibility of die is color of red.
+The question asks me this conditional probability:
+$P\{R|X\}$ and which can be written like this by using the theorem called the Bayes Rule:\\\\
+$P\{R|X\}=\dfrac{P\{X|R\} \times P\{R\}}{P\{X\}}$\\\\
+Since each color has equal probability in random choosing, $P\{R\}=\dfrac{1}{3}$.\\\\
+And $P\{X\}=\dfrac{1}{3}\times\dfrac{1}{6}+\dfrac{1}{3}\times\dfrac{3}{8}+\dfrac{1}{3}\times\dfrac{2}{10}=\dfrac{89}{360}$\\\\
+And finally $P\{X|R\}=\dfrac{2}{10}$. Finally if i put them together I get:
+$\dfrac{\dfrac{2}{10}\times\dfrac{1}{3}}{\dfrac{89}{360}}=\dfrac{24}{89}=0.269662921$
+
+
+
+\subsection*{e)}
+To calculate this probability we can sum these probabilities, since rolling blue and yellow dice are independent events:\\
+$P\{1|B\}*P\{4|Y\}=\dfrac{1}{6}\times\dfrac{1}{8}=\dfrac{1}{48}$\\\\
+$P\{2|B\}*P\{3|Y\}=\dfrac{1}{6}\times\dfrac{3}{8}=\dfrac{1}{16}$\\\\
+$P\{4|B\}*P\{1|Y\}=\dfrac{1}{6}\times\dfrac{3}{8}=\dfrac{1}{16}$\\\\And if i sum them up my probability becomes $\dfrac{7}{48}\approx0.14583$
+
+
+
+\section*{Answer 2}
+
+\subsection*{a)}
+I think in this question it is better to use binomial distribution. I can resemble the number of distributors to the number of trials in the the binomial distribution. So n(number of trials)=80. And I can call the the probability of offering a discount as p=0.025 and q=1-p=0.975. Also i can call $X$ as the the random variable as the number of distrubitors apply discount. And my desired probability is P\{$x\geq4\}$. And my parameters in this question is like this:\\\\
+$p=0.025$ and $q=0.975$\\
+$P\{x\geq4\}=1-F(3)=1-(P\{x=0\}+P\{x=1\}+P\{x=2\}+P\{x=3\})$\\\\
+$P\{x=0\}=\binom {80}{0}\times p^{0}\times q^{80}=0.13193$\\\\
+$P\{x=1\}=\binom {80}{1}\times p^{1}\times q^{79}=0.270641$\\\\
+$P\{x=2\}=\binom {80}{2}\times p^{2}\times q^{78}=0.274111$\\\\
+$P\{x=3\}=\binom {80}{3}\times p^{3}\times q^{77}=0.182741$\\\\
+So $P\{x\geq4\}=1-F(3)=1-(P\{x=0\}+P\{x=1\}+P\{x=2\}+P\{x=3\})\approx0.1405681$
+
+
+\subsection*{b)} 
+To be more clear late in the question, $P\{A\}$ is the probability that at least one distributor from company A will offer a discount within a 2 days and $P\{B\}$ is the probability that distributor of company B will offer a discount within a 2 days.\\\\
+For company B)\\ I am gonna use "geometric distribution". In addition to that, I have to sum the probabilities that I reach the success at the first trial or at the second trial and I'm gonna calculate that by using the general equation for geometric distribution:\\\\
+For the p=0.1 and x(number of trials)=2:\\
+$P(x) = (1-p)^{x-1}\times p=0.09$\\
+For the p=0.1 and x(number of trials)=1:\\
+$P(x) = (1-p)^{x-1}\times p=0.1$ And when I sum them up: $P\{x\leq2\}=0.19$\\\\
+And for the Company A, we should think about this method:\\
+Since there is 80 distributors of company A and each of these offers a discount with a probability of 0.025 on a specific day, we can use poisson distribution.(Because $n=80\geq30$ and $p=0.025\leq0.05$)\\\\
+So $\lambda=np=2$. But I should consider that I'm now looking for the possibility of offering 0 discount in 2 days not the first day, so I should double the $\lambda$. So my $\lambda$ becomes 4. And if I look at the poisson table given in the book I can see that the corresponding value is 0.018(($\lambda=4,$x=0)). So if I substract this value from 1, I get the value of 0.982. And this value actually gives me the probability that one of the distributors of company A will offer a discount. \\\\
+So now I can simply calculate the probability of $P\{A\cup B\}$ (this actually gives me the probability that I will buy a phone either from company A or company B) $P\{A\cup B\}=P\{A\}+P\{B\}-(P\{ B\}\times P\{A\})=0.982+0.19-0.982\times0.19\approx0.98542$\\\\
+
+
+\section*{Answer 3}
+Analysis:\\
+It can be seen that the average values for first and second option is really close to the calculated expected values in 1b. Also by looking at the "Percentage of second option is greater than the first one", it is clear that choosing rolling 3 times the blue die is more advantageous at getting the higher total value.\\\\
+Codes:\\
+\begin{lstlisting}[style=Matlab-editor]
+total_number_single_each=0;% the total values for 1000 tries for option 2
+
+single_temp=0;%the total values for a single try for the option 1
+
+total_number_three_blue=0;%the total values for 1000 tries for option 1
+
+blue_temp=0;%the total values for a single try for the option 2
+
+total_number_second_greater=0; %this is to hold the which otion is greater
+
+%Face values for each die
+dataset_blue = [1;2;3;4;5;6];
+dataset_yellow = [1;1;1;3;3;3;4;8];
+dataset_red = [2;2;2;2;2;3;3;4;4;6];
+
+%iteration part, i get a random number from each dataset
+for v = 1.0:1.0:1000.0
+	idx=randperm(length(dataset_blue),1);
+	single_temp=dataset_blue(idx)+single_temp;
+	idx=randperm(length(dataset_yellow),1);
+	single_temp=dataset_yellow(idx)+single_temp; 
+	idx=randperm(length(dataset_red),1);
+	single_temp=dataset_red(idx)+single_temp;
+	idx=randperm(length(dataset_blue),1);
+	blue_temp=dataset_blue(idx)+blue_temp;
+	idx=randperm(length(dataset_blue),1);
+	blue_temp=dataset_blue(idx)+blue_temp;
+	idx=randperm(length(dataset_blue),1);
+	blue_temp=dataset_blue(idx)+blue_temp;
+	if single_temp<blue_temp
+		total_number_second_greater=total_number_second_greater+1;
+	end
+	total_number_three_blue=total_number_three_blue+blue_temp;
+	total_number_single_each=total_number_single_each+single_temp;
+	blue_temp=0;
+	single_temp=0;
+end
+
+%display part
+disp("Single roll of each color average:")
+disp(total_number_single_each/1000)
+
+disp("3 times roll of blue average:")
+disp(total_number_three_blue/1000)
+
+disp("Percentage of second option is greater than the first one:")
+disp(total_number_second_greater/10)
+
+
+\end{lstlisting}
+Screenshots:\\
+(If you zoom in a little bit, it will be more visible, I wanted to show the workspace, too)\\
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{odev.png}
+  \centering
+  \label{fig 1:output}
+\end{figure}
+
+\end{document}
